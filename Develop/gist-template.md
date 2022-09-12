@@ -1,9 +1,11 @@
 # Regex Tuorial
-## Table of Contents
+## Introduction
+Hello, and welcome to my **Regular Expressions** tutorial! In this tutorial, we will be going over what a **regex** is, along with how to use it in our **Javascript** code! Now, get comfortable, and let us learn together!
 
+## Table of Contents
 - [Regex Tuorial](#regex-tuorial)
-  - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
+  - [Table of Contents](#table-of-contents)
   - [Summary](#summary)
     - [What is a Regex?](#what-is-a-regex)
     - [Example: Email Validation](#example-email-validation)
@@ -18,11 +20,7 @@
   - [Character Escapes](#character-escapes)
   - [Author](#author)
 
-## Introduction
-Hello, and welcome to my **Regular Expressions** tutorial! In this tutorial, we will be going over what a **regex** is, along with how to use it in our **Javascript** code! Now, get comfortable, and let us learn together!
-
 ## Summary
-
 ### What is a Regex?
 A **Regex**, or **Regular Expression**, is a search pattern primarily used to match a series of character combinations found within string. When included in code, a **Regex** could be particularly helpful in finding certain characters, sequences of characters, or input string validation. 
 
