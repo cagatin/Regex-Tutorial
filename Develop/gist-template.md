@@ -23,6 +23,7 @@ Hello, and welcome to my **Regular Expressions** tutorial! In this tutorial, we 
     - [Capturing Groups have two main effects:](#capturing-groups-have-two-main-effects)
     - [Example: Email Validation - Grouping Contruct](#example-email-validation---grouping-contruct)
   - [Bracket Expressions](#bracket-expressions)
+    - [What is a Bracket Expression?](#what-is-a-bracket-expression)
   - [Character Classes](#character-classes)
   - [The OR Operator](#the-or-operator)
   - [Flags](#flags)
@@ -174,9 +175,28 @@ Group 3: \.([a-z\.]{2,6})
 ```
 - The first group uses the bracket expression in order to create a pattern to match the username of the email address.
 - The second group begins with the ```@``` symbol, and is used to group the bracket expression which matches the mail server or domain name of the email. 
-<br>
 - The third group begins with a period or dot (```.```), and is used to group together the bracket expression to match the domain. This group utilizes a **quantifier** to apply a match limit on the entirety of the capture group. 
+
 ## Bracket Expressions
+### What is a Bracket Expression?
+A **Bracket Expression** is a regex pattern which indicates a set or range of characters to match. 
+As the name suggests, a **bracket expression** is denoted by brackets **[]**, and are primarily used to denote what characters should be 
+included within our regex pattern. 
+<br>
+<br>
+For example, let us take a look at the following bracket expression:
+```
+const text1 = "food";
+const text2 = "good";
+const text3 = "sugar";
+
+const regex = /[oo]/;     // here, we want to match the double o's
+
+console.log(regex.test(tex1));    //returns true! "food" contians double o's!
+console.log(regex.test(text2));   //returns true!
+
+console.log(regex.test(tex3));    //returns false! "sugar" does not contain double o's!
+```
 
 ## Character Classes
 
