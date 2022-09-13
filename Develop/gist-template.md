@@ -15,7 +15,13 @@ Hello, and welcome to my **Regular Expressions** tutorial! In this tutorial, we 
     - [The Dollar Sign Anchor](#the-dollar-sign-anchor)
     - [Example: Email Validation - Anchors](#example-email-validation---anchors)
   - [Quantifiers](#quantifiers)
-  - [Grouping Constructs](#grouping-constructs)
+    - [What is a Quantifier?](#what-is-a-quantifier)
+    - [Quantifier Characters](#quantifier-characters)
+    - [Example: Email Validation - Quantifiers](#example-email-validation---quantifiers)
+  - [Grouping Constructs and Subexpressions](#grouping-constructs-and-subexpressions)
+    - [What is a Subexpression?](#what-is-a-subexpression)
+    - [Capturing Groups have two main effects:](#capturing-groups-have-two-main-effects)
+    - [Grouping Constructs fall into Two Primary Categories:](#grouping-constructs-fall-into-two-primary-categories)
   - [Bracket Expressions](#bracket-expressions)
   - [Character Classes](#character-classes)
   - [The OR Operator](#the-or-operator)
@@ -96,8 +102,65 @@ Ending anchor:
 Here, we are again utilizing **bracket notation**, as well as a **quantifier**  to specifiy what our string should end with. In essence, we are stating that our string should ***end*** with the specified characters above, and should only contain 2 characters minimum, and 6 characters maximum. 
 
 ## Quantifiers
+### What is a Quantifier?
+A **Quantifier** is a limit set on a regular expression which specifies the numerical value of characters or expressions to match. **Quantifiers** are inherently **greedy**, and will search the entirety of the section of the string for **ALL** occurances of the specified pattern. 
 
-## Grouping Constructs
+### Quantifier Characters
+A **quantifier** is denoted by specific characters, which specify the numerical limit of matched patterns. 
+
+* ```x*``` - Matches the preceeding pattern ```x``` ***zero or more*** times. 
+* ```x+``` - Matches the preceeding pattern ```x``` ***one or more*** times. 
+  * equivalent to {1,}
+* ```x?``` - Matches the preceeding pattern ```x``` ***zero or one*** times.
+  * Can be used immediately *after* any of the quantifiers to make the regex ***lazy*** (i.e. the regex quantifier will now match the pattern the ***minimum*** number of times). 
+* ```x{}``` - Creates the following limit matches:
+  * ```x{n}``` - Matches the preceeding pattern ```x```  ***exactly*** **n** times.
+  * ```x{n,}``` - Matches the preceeding pattern ```x```  ***at least*** **n** times.
+  * ```x{n,m}``` - Creates a numerical **range** limit on the number of matches in the preceeding pattern ```x```. 
+    * Matches the pattern ***at least*** **n** times, and ***at most*** **m** times. 
+<br>
+### Example: Email Validation - Quantifiers
+Let us return to our email validation example from above.
+```
+const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+```
+Notice the use of the quanitfier towards the tail end of the regular expression:
+```
+([a-z\.]{2,6})$
+```
+So, what does this mean? The values in the brackets ```{2,6}``` specify a numerical range of patterns to match in the given bracket expression0-that is- that the trail end of the string can contain at minimum two characters specfied within the bracket expression, and at maximum, 6 charaters within it. 
+<br>
+<br>
+
+## Grouping Constructs and Subexpressions
+### What is a Subexpression?
+A **subexpression** is a means of grouping a section of a regex via parentheses ```()```. 
+When a pattern is enclosed within parenthesis, it is called a **capturing group.**
+
+### Capturing Groups have two main effects:
+1. Enables users to retrieve a part of the pattern match as a seperate item in the results array. 
+2. Enables users to place a **quantifier** after the parenthesis.
+   * causes the quantifier to apply to the entirety of the capture group.  
+
+For example, let us take a look at the following example which utilizes the ```:``` colon grouping construct:
+```
+(hello)-(world)
+```
+Here, we create a regex which seeks to match one word, ```(Hello)```, a dash, followed by another word, ```(World)```.
+<br>
+<br>
+Let us again utilize the ```regex.test``` method to display this.
+```
+let text1 = "Hello-World"
+let text2 = "Hello World"
+
+const myRegex = /(Hello)-(World)/;
+
+console.log(myRegex.test(text1));     // returns true
+console.log(myRegex.test(text2));     // returns false
+```
+
+### Grouping Constructs fall into Two Primary Categories:
 
 ## Bracket Expressions
 
