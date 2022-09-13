@@ -117,7 +117,7 @@ A **quantifier** is denoted by specific characters, which specify the numerical 
   * ```x{n}``` - Matches the preceeding pattern ```x```  ***exactly*** **n** times.
   * ```x{n,}``` - Matches the preceeding pattern ```x```  ***at least*** **n** times.
   * ```x{n,m}``` - Creates a numerical **range** limit on the number of matches in the preceeding pattern ```x```. 
-    * Matches the pattern ***at least*** **n** times, and ***at most*** **m** times.  
+    * Matches the pattern ***at least*** **n** times, and ***at most*** **m** times. 
 
 ### Example: Email Validation - Quantifiers
 Let us return to our email validation example from above.
@@ -173,7 +173,6 @@ Group 2: @([\da-z\.-]+)
 Group 3: \.([a-z\.]{2,6})
 ```
 - The first group uses the bracket expression in order to create a pattern to match the username of the email address.
-<br>
 - The second group begins with the ```@``` symbol, and is used to group the bracket expression which matches the mail server or domain name of the email. 
 <br>
 - The third group begins with a period or dot (```.```), and is used to group together the bracket expression to match the domain. This group utilizes a **quantifier** to apply a match limit on the entirety of the capture group. 
