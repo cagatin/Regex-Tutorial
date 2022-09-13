@@ -117,9 +117,7 @@ A **quantifier** is denoted by specific characters, which specify the numerical 
   * ```x{n}``` - Matches the preceeding pattern ```x```  ***exactly*** **n** times.
   * ```x{n,}``` - Matches the preceeding pattern ```x```  ***at least*** **n** times.
   * ```x{n,m}``` - Creates a numerical **range** limit on the number of matches in the preceeding pattern ```x```. 
-    * Matches the pattern ***at least*** **n** times, and ***at most*** **m** times. 
-* 
-
+    * Matches the pattern ***at least*** **n** times, and ***at most*** **m** times.  
 
 ### Example: Email Validation - Quantifiers
 Let us return to our email validation example from above.
