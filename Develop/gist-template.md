@@ -21,7 +21,7 @@ Hello, and welcome to my **Regular Expressions** tutorial! In this tutorial, we 
   - [Grouping Constructs and Subexpressions](#grouping-constructs-and-subexpressions)
     - [What is a Subexpression?](#what-is-a-subexpression)
     - [Capturing Groups have two main effects:](#capturing-groups-have-two-main-effects)
-    - [Example: Email Validation - Quantifiers](#example-email-validation---quantifiers-1)
+    - [Example: Email Validation - Grouping Contruct](#example-email-validation---grouping-contruct)
   - [Bracket Expressions](#bracket-expressions)
   - [Character Classes](#character-classes)
   - [The OR Operator](#the-or-operator)
@@ -128,10 +128,12 @@ Notice the use of the quanitfier towards the tail end of the regular expression:
 ```
 ([a-z\.]{2,6})$
 ```
-So, what does this mean? The values in the brackets ```{2,6}``` specify a numerical range of patterns to match in the given bracket expression0-that is- that the trail end of the string can contain at minimum two characters specfied within the bracket expression, and at maximum, 6 charaters within it. 
-<br>
-<br>
+So, what does this mean? 
+The values in the brackets ```{2,6}``` specify a numerical range of patterns to match in the given bracket expression.
 
+This means that the trail end of the string can contain at minimum two characters specfied within the bracket expression, and at maximum, 6 charaters within it. 
+<br>
+<br>
 ## Grouping Constructs and Subexpressions
 ### What is a Subexpression?
 A **subexpression** is a means of grouping a section of a regex via parentheses ```()```. 
@@ -159,11 +161,22 @@ const myRegex = /(Hello)-(World)/;
 console.log(myRegex.test(text1));     // returns true
 console.log(myRegex.test(text2));     // returns false
 ```
-### Example: Email Validation - Quantifiers
+### Example: Email Validation - Grouping Contruct
 Let us return to our email validation example from above.
 ```
 const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 ```
+Let us seperate the different groups below:
+```
+Group 1: ([a-z0-9_\.-]+)
+Group 2: @([\da-z\.-]+)
+Group 3: \.([a-z\.]{2,6})
+```
+- The first group uses the bracket expression in order to create a pattern to match the username of the email address.
+<br>
+- The second group begins with the ```@``` symbol, and is used to group the bracket expression which matches the mail server or domain name of the email. 
+<br>
+- The third group begins with a period or dot (```.```), and is used to group together the bracket expression to match the domain. This group utilizes a **quantifier** to apply a match limit on the entirety of the capture group. 
 ## Bracket Expressions
 
 ## Character Classes
