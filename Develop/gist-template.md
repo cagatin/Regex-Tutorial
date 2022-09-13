@@ -21,7 +21,7 @@ Hello, and welcome to my **Regular Expressions** tutorial! In this tutorial, we 
   - [Grouping Constructs and Subexpressions](#grouping-constructs-and-subexpressions)
     - [What is a Subexpression?](#what-is-a-subexpression)
     - [Capturing Groups have two main effects:](#capturing-groups-have-two-main-effects)
-    - [Grouping Constructs fall into Two Primary Categories:](#grouping-constructs-fall-into-two-primary-categories)
+    - [Example: Email Validation - Quantifiers](#example-email-validation---quantifiers-1)
   - [Bracket Expressions](#bracket-expressions)
   - [Character Classes](#character-classes)
   - [The OR Operator](#the-or-operator)
@@ -159,9 +159,11 @@ const myRegex = /(Hello)-(World)/;
 console.log(myRegex.test(text1));     // returns true
 console.log(myRegex.test(text2));     // returns false
 ```
-
-### Grouping Constructs fall into Two Primary Categories:
-
+### Example: Email Validation - Quantifiers
+Let us return to our email validation example from above.
+```
+const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+```
 ## Bracket Expressions
 
 ## Character Classes
