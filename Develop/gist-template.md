@@ -118,7 +118,9 @@ A **quantifier** is denoted by specific characters, which specify the numerical 
   * ```x{n,}``` - Matches the preceeding pattern ```x```  ***at least*** **n** times.
   * ```x{n,m}``` - Creates a numerical **range** limit on the number of matches in the preceeding pattern ```x```. 
     * Matches the pattern ***at least*** **n** times, and ***at most*** **m** times. 
-<br>
+* 
+
+
 ### Example: Email Validation - Quantifiers
 Let us return to our email validation example from above.
 ```
@@ -130,7 +132,7 @@ Notice the use of the quanitfier towards the tail end of the regular expression:
 ```
 So, what does this mean? 
 The values in the brackets ```{2,6}``` specify a numerical range of patterns to match in the given bracket expression.
-
+<br>
 This means that the trail end of the string can contain at minimum two characters specfied within the bracket expression, and at maximum, 6 charaters within it. 
 <br>
 <br>
