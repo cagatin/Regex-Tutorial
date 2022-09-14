@@ -34,6 +34,7 @@ Hello, and welcome to my **Regular Expressions** tutorial! In this tutorial, we 
       - [Dot Character class](#dot-character-class)
     - [Example: Email Validation - Character classes](#example-email-validation---character-classes)
   - [The OR Operator](#the-or-operator)
+    - [What is the OR operator?](#what-is-the-or-operator)
   - [Flags](#flags)
   - [Character Escapes](#character-escapes)
   - [Author](#author)
@@ -286,9 +287,21 @@ Group two of this regular expression utilizes a character class!
 ```
 This character class will match any digits!
 
-
 ## The OR Operator
+### What is the OR operator?
+The OR operator (```|```) is primarily used to as a logical **OR** operation, similar to most programming languages (such as ```if(x || y)``` in javascript). We will primarily use this OR operater in the event that we want our regex to match either Pattern A OR Pattern B.
+<br>
+<br>
+Let us demonstrate this using the following example:
+```js
+let text = `this is my test text`;
+let regex = /is|test/;
 
+console.log(text.match(regex)[0]);  //returns 'is'
+```
+In the example above, we create a regular expression which states we want to match either: ```'is'``` OR ```'test'```
+<br>
+Since the ```'is'``` string was found first, it is the string that is returned by the ```match()``` method. 
 ## Flags
 
 ## Character Escapes
