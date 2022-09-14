@@ -36,6 +36,9 @@ Hello, and welcome to my **Regular Expressions** tutorial! In this tutorial, we 
   - [The OR Operator](#the-or-operator)
     - [What is the OR operator?](#what-is-the-or-operator)
   - [Flags](#flags)
+    - [What are Flags?](#what-are-flags)
+    - [Global Flag](#global-flag)
+    - [Ignore Flag](#ignore-flag)
   - [Character Escapes](#character-escapes)
   - [Author](#author)
 
@@ -302,7 +305,36 @@ console.log(text.match(regex)[0]);  //returns 'is'
 In the example above, we create a regular expression which states we want to match either: ```'is'``` OR ```'test'```
 <br>
 Since the ```'is'``` string was found first, it is the string that is returned by the ```match()``` method. 
+
 ## Flags
+### What are Flags?
+A **Flag** or **Pattern Flag** is an optional parameter which changes the searching behaviour of a regular expression. Flags are the only part of a regex that can be placed ***outside*** of the double forward slashes ```//```. Let us take a look at the most common flags below.
+
+### Global Flag
+The **Global Flag** (```g```) is primarily used to find **ALL** matches in a search string. Without setting this flag, the regex will return the ***first*** match it finds. 
+<br>
+<br>
+Let us demonstrate this using our handy OR operator from above. 
+```js
+let text = `this is my test text`;
+let regex = /is|test/;
+
+console.log(text.match(regex));  //returns ['is', 'is', 'test'];
+```
+You may be asking yourself: Where are the double ```'is'``` values coming from? Recall that the global flag is used to find **ALL** matches within the search string. Thus, the first ```'is``` is found in the ```'this``` string!
+
+### Ignore Flag
+The **Ignore Flag** (```i```) is used to ***ignore*** case sensitivity within in the search string. 
+<br>
+<br>
+Let us demonstrate this using the following example:
+```js
+let text = 'HELLO World';
+let regex = /hello/i;
+
+console.log(regex.test(text));    //true!
+```
+Since we are using the **ignore flag**, the regex is used to match ```'hello'```, regarless of case sensitivity!
 
 ## Character Escapes
 
