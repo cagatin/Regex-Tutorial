@@ -43,6 +43,7 @@ Hello, and welcome to my **Regular Expressions** tutorial! In this tutorial, we 
     - [What are Character escapes?](#what-are-character-escapes)
     - [Example: Email Validation - Character Escapes](#example-email-validation---character-escapes)
   - [Author](#author)
+    - [Connect with me!](#connect-with-me)
 
 ## Summary
 ### What is a Regex?
@@ -348,6 +349,10 @@ Let us return to our email validation example from above.
 const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 ```
 There are multiple character escapes in our email Regex! They are primarily used within the email regex to escape/include the ```.``` character!
-## Author
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+## Author
+Thank you for reading my regex guide/tutorial. Hopefully, we have developed a greater understanding of how regular expressions work, and how to use them in our code!
+
+### Connect with me!
+* [Github](https://github.com/)
+* [Linkedin](https://www.linkedin.com/in/gilbertcagatin/)
