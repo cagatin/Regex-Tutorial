@@ -27,6 +27,10 @@ Hello, and welcome to my **Regular Expressions** tutorial! In this tutorial, we 
     - [Using Hyphens (```-```) to Set a Range of Characters](#using-hyphens---to-set-a-range-of-characters)
     - [Example: Email Validation - Bracket Expression](#example-email-validation---bracket-expression)
   - [Character Classes](#character-classes)
+    - [What is a Character Class?](#what-is-a-character-class)
+    - [Commonly Used Character Classes](#commonly-used-character-classes)
+      - [Digit Character Class](#digit-character-class)
+      - [Alphanumeric Characater Class](#alphanumeric-characater-class)
   - [The OR Operator](#the-or-operator)
   - [Flags](#flags)
   - [Character Escapes](#character-escapes)
@@ -38,14 +42,14 @@ A **Regex**, or **Regular Expression**, is a search pattern primarily used to ma
 
 ### Example: Email Validation
 To illustrate what a Regex is, let us look at one of the most commonly used regex patterns - email validation!
-```
+```js
 const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 ```
 What this means exactly is not important for now (We will understand this regex more as we progress through this tutorial). What is important understand, however, is that a regex is enclosed within two forward slashes ```//```. 
 <br>
 <br>
 The general syntax to denote the start and end of a regex is as follows: <br>
-```
+```js
 const myRegex = /<regex expression goes here>/;
 ```
 Now that we have an understanding of what a Regex is and how to declare them, let us learn how to create much more complex regex patterns!
@@ -63,11 +67,11 @@ The Caret anchor (```^```) signifies that the string begins with a specific char
 <br>
 <br>
 Say we have the following string:
-```
+```js
 const testStr = "Hello World!";
 ```
 Now, let us use the ```test()``` method of the ```RegExp``` object to execute a search for a match between our regular expressioun and test string.
-```
+```js
 let myRegex = /^H/;
 
 console.log(testStr.test(myRegex));   // returns true! 'Hello, World!' starts w/ H.
@@ -79,7 +83,7 @@ The Dollar Sign anchor (```$```) signifies that the string ends with a specific 
 <br>
 <br>
 Here is an example using our test string from above. 
-```
+```js
 const testStr = "Hello World!";
 
 myRegex = /!$/;                     // The character is placed before the $ sign!
@@ -89,17 +93,17 @@ Note: A key difference in syntax between the caret anchor and dollar sign anchor
 
 ### Example: Email Validation - Anchors
 Let us return to our email validation example from above.
-```
+```js
 const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 ```
 The following regex section uses the **carat anchor** to denote that the email string begins with a character contained within the **bracket expression** (we will cover this later). In essence, we are stating that the first character ***begins*** with a character a-z, 0-9, an underscore character, dot character, or hyphen character. 
-```
-Beginning anchor:
+```js
+//Beginning anchor:
 /^([a-z0-9_\.-]+) 
 ```
 Now let us take a look at the end character.
-```
-Ending anchor:
+```js
+//Ending anchor:
 ([a-z\.]{2,6})$/
 ```
 Here, we are again utilizing **bracket notation**, as well as a **quantifier**  to specifiy what our string should end with. In essence, we are stating that our string should ***end*** with the specified characters above, and should only contain 2 characters minimum, and 6 characters maximum. 
@@ -124,7 +128,7 @@ A **quantifier** is denoted by specific characters, which specify the numerical 
 
 ### Example: Email Validation - Quantifiers
 Let us return to our email validation example from above.
-```
+```js
 const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 ```
 Notice the use of the quanitfier towards the tail end of the regular expression:
@@ -155,7 +159,7 @@ Here, we create a regex which seeks to match one word, ```(Hello)```, a dash, fo
 <br>
 <br>
 Let us again utilize the ```regex.test``` method to display this.
-```
+```js
 let text1 = "Hello-World"
 let text2 = "Hello World"
 
@@ -166,7 +170,7 @@ console.log(myRegex.test(text2));     // returns false
 ```
 ### Example: Email Validation - Grouping Contruct
 Let us return to our email validation example from above.
-```
+```js
 const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 ```
 Let us seperate the different groups below:
@@ -187,7 +191,7 @@ included within our regex pattern.
 <br>
 <br>
 For example, let us take a look at the following bracket expression:
-```
+```js
 const text1 = "food";
 const text2 = "good";
 const text3 = "sugar";
@@ -211,7 +215,7 @@ For example, let us view the following bracket expressions:
 ```
 ### Example: Email Validation - Bracket Expression
 Let us return to our email validation example from above.
-```
+```js
 const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 ```
 We displayed in the Grouping Conctruct section that this email regex is split into three distinct groups:
@@ -231,8 +235,30 @@ In the second group, our bracket expression consists of a character class (somet
 Group 3: \.([a-z\.]{2,6})
 In our last group, our bracket expression simply matches lowercase letters a-z, and a period. 
 ```
-
 ## Character Classes
+### What is a Character Class?
+A **character class** defines a set or group of characters to match. Character classes enable us to create regular expression that match any symbol or character to a set of characters!
+
+### Commonly Used Character Classes
+#### Digit Character Class
+The digit character class (```\d```) enables us to match a single numeric digit. This means we are able to match any number between 0 and 9!
+Let us use the follwing example to retrieve the area code of a phone number:
+```js
+let num = "951-555-9876";
+let regex = /\d{3}/;
+
+console.log(num.match(regex)[0]);
+//returns: '951'
+```
+#### Alphanumeric Characater Class
+As the name suggests, the **alphanumeric character class** (```\w```) matches any ASCII character. This class also includes the Latin alphabet, digits, and underscore characters. In the following example, let us retrieve the alphanumeric character from a series of symbols:
+```js
+let str = "&^*a)(";
+let regex = /\w/;
+
+console.log(str.match(regex)[0]);
+//returns: 'a'
+```
 
 ## The OR Operator
 
