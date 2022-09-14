@@ -24,6 +24,8 @@ Hello, and welcome to my **Regular Expressions** tutorial! In this tutorial, we 
     - [Example: Email Validation - Grouping Contruct](#example-email-validation---grouping-contruct)
   - [Bracket Expressions](#bracket-expressions)
     - [What is a Bracket Expression?](#what-is-a-bracket-expression)
+    - [Using Hyphens (```-```) to Set a Range of Characters](#using-hyphens---to-set-a-range-of-characters)
+    - [Example: Email Validation - Bracket Expression](#example-email-validation---bracket-expression)
   - [Character Classes](#character-classes)
   - [The OR Operator](#the-or-operator)
   - [Flags](#flags)
@@ -195,7 +197,39 @@ const regex = /[oo]/;     // here, we want to match the double o's
 console.log(regex.test(tex1));    //returns true! "food" contians double o's!
 console.log(regex.test(text2));   //returns true!
 
-console.log(regex.test(tex3));    //returns false! "sugar" does not contain double o's!
+console.log(regex.test(text3));    //returns false! "sugar" does not contain double o's!
+```
+
+### Using Hyphens (```-```) to Set a Range of Characters
+We can utilize the hyphen character to create a range of possible characters to match for our bracket expression. Do note, however, that hyphens can only be used with **alphanumeric characters ONLY**. 
+<br>
+For example, let us view the following bracket expressions:
+```
+[a-z] - matches lowercase letters between a-z.
+[A-Z] - matches uppercase letters between a-z.
+[0-9] - matches numbers between 0 and 9. 
+```
+### Example: Email Validation - Bracket Expression
+Let us return to our email validation example from above.
+```
+const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+```
+We displayed in the Grouping Conctruct section that this email regex is split into three distinct groups:
+```
+Group 1: ([a-z0-9_\.-]+)
+Group 2: @([\da-z\.-]+)
+Group 3: \.([a-z\.]{2,6})
+```
+Now let explain the bracket expressions within the grouping constructs.
+```
+Group 1: ([a-z0-9_\.-]+)
+Here, the first group can take in any noncapitalized alphanumeric value. E.g. a value between a-z, 0-9, as well as a period . or a hyphen - .
+
+Group 2: @([\da-z\.-]+)
+In the second group, our bracket expression consists of a character class (something we will explain next section), as well as lowercase letters a-z, a period, and a hypthen.
+
+Group 3: \.([a-z\.]{2,6})
+In our last group, our bracket expression simply matches lowercase letters a-z, and a period. 
 ```
 
 ## Character Classes
