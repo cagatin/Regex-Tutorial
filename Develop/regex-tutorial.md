@@ -40,6 +40,8 @@ Hello, and welcome to my **Regular Expressions** tutorial! In this tutorial, we 
     - [Global Flag](#global-flag)
     - [Ignore Flag](#ignore-flag)
   - [Character Escapes](#character-escapes)
+    - [What are Character escapes?](#what-are-character-escapes)
+    - [Example: Email Validation - Character Escapes](#example-email-validation---character-escapes)
   - [Author](#author)
 
 ## Summary
@@ -334,11 +336,18 @@ let regex = /hello/i;
 
 console.log(regex.test(text));    //true!
 ```
-Since we are using the **ignore flag**, the regex is used to match ```'hello'```, regarless of case sensitivity!
+Since we are using the **ignore flag**, the regex is used to match ```'hello'```, regarless of case sensitivity!.
 
 ## Character Escapes
+### What are Character escapes?
+Similar to most programming languages, the backslash character (```\```) can be used within a regular expression to escape a character that could be interpreted literally. This is useful in the event that we want to use distince characters that would otherwise be unable to be used within the regex. 
 
-
+### Example: Email Validation - Character Escapes
+Let us return to our email validation example from above.
+```js
+const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+```
+There are multiple character escapes in our email Regex! They are primarily used within the email regex to escape/include the ```.``` character!
 ## Author
 
 A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
