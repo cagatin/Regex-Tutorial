@@ -30,7 +30,9 @@ Hello, and welcome to my **Regular Expressions** tutorial! In this tutorial, we 
     - [What is a Character Class?](#what-is-a-character-class)
     - [Commonly Used Character Classes](#commonly-used-character-classes)
       - [Digit Character Class](#digit-character-class)
-      - [Alphanumeric Characater Class](#alphanumeric-characater-class)
+      - [Alphanumeric Character Class](#alphanumeric-character-class)
+      - [Dot Character class](#dot-character-class)
+    - [Example: Email Validation - Character classes](#example-email-validation---character-classes)
   - [The OR Operator](#the-or-operator)
   - [Flags](#flags)
   - [Character Escapes](#character-escapes)
@@ -97,13 +99,13 @@ Let us return to our email validation example from above.
 const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 ```
 The following regex section uses the **carat anchor** to denote that the email string begins with a character contained within the **bracket expression** (we will cover this later). In essence, we are stating that the first character ***begins*** with a character a-z, 0-9, an underscore character, dot character, or hyphen character. 
-```js
-//Beginning anchor:
+```
+Beginning anchor:
 /^([a-z0-9_\.-]+) 
 ```
 Now let us take a look at the end character.
-```js
-//Ending anchor:
+```
+Ending anchor:
 ([a-z\.]{2,6})$/
 ```
 Here, we are again utilizing **bracket notation**, as well as a **quantifier**  to specifiy what our string should end with. In essence, we are stating that our string should ***end*** with the specified characters above, and should only contain 2 characters minimum, and 6 characters maximum. 
@@ -250,7 +252,7 @@ let regex = /\d{3}/;
 console.log(num.match(regex)[0]);
 //returns: '951'
 ```
-#### Alphanumeric Characater Class
+#### Alphanumeric Character Class
 As the name suggests, the **alphanumeric character class** (```\w```) matches any ASCII character. This class also includes the Latin alphabet, digits, and underscore characters. In the following example, let us retrieve the alphanumeric character from a series of symbols:
 ```js
 let str = "&^*a)(";
@@ -259,6 +261,31 @@ let regex = /\w/;
 console.log(str.match(regex)[0]);
 //returns: 'a'
 ```
+#### Dot Character class
+The **dot character class** (```.```) is a class which matches **ANY** character *except* a new line character!
+```js
+let text = `
+
+a
+
+`;
+
+let regex = /./;
+
+console.log(text.match(regex)[0]);    //'a'
+```
+### Example: Email Validation - Character classes
+Let us return to our email validation example from above.
+```js
+const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+```
+Group two of this regular expression utilizes a character class!
+```
+([\da-z\.-]+)
+\d 
+```
+This character class will match any digits!
+
 
 ## The OR Operator
 
